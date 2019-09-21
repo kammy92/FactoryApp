@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "321178157410",
+    "firebase_url": "https://factory-app-b348e.firebaseio.com",
+    "project_id": "factory-app-b348e",
+    "storage_bucket": "factory-app-b348e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321178157410:android:86a1c339e5579f2e",
+        "android_client_info": {
+          "package_name": "com.karman.factoryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321178157410-aibstbl15f0rktoouff7e9ikam8h7cie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrIwVnw4kfvGc9K7SiqWf5Hw-jF2fkh9c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
