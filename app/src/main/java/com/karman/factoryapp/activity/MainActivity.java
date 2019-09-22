@@ -8,23 +8,39 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.volley.*;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.karman.factoryapp.R;
-import com.karman.factoryapp.utils.*;
+import com.karman.factoryapp.callbacks.VolleyCallback;
+import com.karman.factoryapp.controller.VolleyController;
+import com.karman.factoryapp.utils.AppConfigTags;
+import com.karman.factoryapp.utils.AppConfigURL;
+import com.karman.factoryapp.utils.AppDetailsPref;
+import com.karman.factoryapp.utils.Constants;
+import com.karman.factoryapp.utils.NetworkConnection;
+import com.karman.factoryapp.utils.SetTypeFace;
+import com.karman.factoryapp.utils.UserDetailsPref;
+import com.karman.factoryapp.utils.Utils;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -40,6 +56,9 @@ import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
@@ -54,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout rlBack;
     private AccountHeader headerResult = null;
     private Drawer result = null;
-
+    Button button;
+    VolleyController volleyController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +83,17 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initData();
         initListener();
-        initApplication();
-        isLogin();
+//        initApplication();
+//        isLogin();
         initDrawer();
     }
 
     private void isLogin() {
         if (userDetailsPref.getStringPref(MainActivity.this, UserDetailsPref.USER_TOKEN).length() == 0) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity (intent);
-            finish ();
-            overridePendingTransition (R.anim.slide_in_left, R.anim.slide_out_right);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
     }
 
@@ -84,11 +104,31 @@ public class MainActivity extends AppCompatActivity {
                 result.openDrawer();
             }
         });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("karman", "Test Click");
+                Map<String, String> header = new HashMap<>();
+                header.put("Header 0", "header 0");
+                volleyController.makeGetRequest("https://reqres.in/api/users?page=2", header, new VolleyCallback() {
+                    @Override
+                    public void onSuccess(JSONObject result) throws JSONException {
+                        Toast.makeText(getApplicationContext(), "Hurray!!", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(String result) throws Exception {
+                        Toast.makeText(getApplicationContext(), "Oops!!", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
     }
 
     private void initView() {
         rlBack = (RelativeLayout) findViewById(R.id.rlBack);
         clMain = (CoordinatorLayout) findViewById(R.id.clMain);
+        button = (Button) findViewById(R.id.bt1);
     }
 
     private void initData() {
@@ -97,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
         userDetailsPref = UserDetailsPref.getInstance();
 
         progressDialog = new ProgressDialog(this);
+
+        volleyController = VolleyController.getInstance(this);
 
 /*
 
@@ -120,10 +162,10 @@ public class MainActivity extends AppCompatActivity {
 */
     }
 
-    private void initFirstFragment () {
-        FragmentTransaction transaction = getSupportFragmentManager ().beginTransaction ();
-   //     transaction.replace (R.id.frame_layout, OffersFragment.newInstance (false));
-   //     transaction.commit ();
+    private void initFirstFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        //     transaction.replace (R.id.frame_layout, OffersFragment.newInstance (false));
+        //     transaction.commit ();
     }
 
     @Override
@@ -498,6 +540,7 @@ public class MainActivity extends AppCompatActivity {
         result = drawerBuilder.build();
     }
 
+
     private void showLogOutDialog() {
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .contentColor(getResources().getColor(R.color.primary_text))
@@ -524,7 +567,8 @@ public class MainActivity extends AppCompatActivity {
                 }).build();
         dialog.show();
     }
-    
+
+
     /*
     public void getProjectList3 () {
         if (NetworkConnection.isNetworkAvailable (MainActivity.this)) {

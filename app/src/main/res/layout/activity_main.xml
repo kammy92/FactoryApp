@@ -75,12 +75,13 @@
             android:layout_height="match_parent"
             android:background="@color/app_background"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <FrameLayout
-                android:id="@+id/frame_layout"
+
+        <Button
+                android:id="@+id/bt1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:animateLayoutChanges="true">
-        </FrameLayout>
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="click" />
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
