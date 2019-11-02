@@ -30,9 +30,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.karman.factoryapp.R;
 import com.karman.factoryapp.callbacks.VolleyCallback;
 import com.karman.factoryapp.controller.VolleyController;
+import com.karman.factoryapp.model.CustomerResponse;
 import com.karman.factoryapp.utils.AppConfigTags;
 import com.karman.factoryapp.utils.AppConfigURL;
 import com.karman.factoryapp.utils.AppDetailsPref;
@@ -113,6 +115,118 @@ public class MainActivity extends AppCompatActivity {
                 volleyController.makeGetRequest("https://reqres.in/api/users?page=2", header, new VolleyCallback() {
                     @Override
                     public void onSuccess(JSONObject result) throws JSONException {
+                        JSONObject jsonObject = new JSONObject("{\n" +
+                                "    \"data\": {\n" +
+                                "        \"customers\": [\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 1,\n" +
+                                "                \"customer_name\": \"AMIT BANARAS\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 2,\n" +
+                                "                \"customer_name\": \"ARSH MIXI\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 3,\n" +
+                                "                \"customer_name\": \"ASHWANI\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 4,\n" +
+                                "                \"customer_name\": \"BANGALI\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 5,\n" +
+                                "                \"customer_name\": \"BHOLA\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 6,\n" +
+                                "                \"customer_name\": \"DECENT ELECTRICAL\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"FARIDABAD\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 7,\n" +
+                                "                \"customer_name\": \"DES RAJ\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 8,\n" +
+                                "                \"customer_name\": \"FITWELL SPARES\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 9,\n" +
+                                "                \"customer_name\": \"GINNI MIXI\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            },\n" +
+                                "            {\n" +
+                                "                \"customer_id\": 10,\n" +
+                                "                \"customer_name\": \"GOYAL ENTERPRISES\",\n" +
+                                "                \"customer_mobile\": \"\",\n" +
+                                "                \"customer_email\": \"\",\n" +
+                                "                \"customer_address\": \"\",\n" +
+                                "                \"customer_status\": 1,\n" +
+                                "                \"created_at\": \"2018-01-06 05:30:00\"\n" +
+                                "            }\n" +
+                                "        ],\n" +
+                                "        \"total\": 55,\n" +
+                                "        \"offset\": 0,\n" +
+                                "        \"limit\": 10,\n" +
+                                "        \"status\": 1,\n" +
+                                "        \"search\": \"\",\n" +
+                                "        \"success_type\": \"FetchedSuccessful\",\n" +
+                                "        \"success_code\": 1111,\n" +
+                                "        \"status_code\": 200,\n" +
+                                "        \"message\": \"Customers fetched successfully.\",\n" +
+                                "        \"more_info\": \"Customer Status : 0=> Inactive, 1=> Active. For more info please visit https://factory-app-cammy92.c9users.io/slim_final/1111\"\n" +
+                                "    },\n" +
+                                "    \"error\": {}\n" +
+                                "}");
+                        Gson gson = new Gson();
+                        CustomerResponse customerResponse = gson.fromJson(jsonObject.toString(), CustomerResponse.class);
+
+                        customerResponse.toString();
+
                         Toast.makeText(getApplicationContext(), "Hurray!!", Toast.LENGTH_LONG).show();
                     }
 
