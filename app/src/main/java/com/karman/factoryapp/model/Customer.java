@@ -7,18 +7,19 @@ public class Customer {
     @SerializedName("customer_id")
     private int customerID;
     @SerializedName("customer_name")
-    private int customerName;
+    private String customerName;
     @SerializedName("customer_mobile")
-    private int customerMobile;
+    private String customerMobile;
     @SerializedName("customer_email")
-    private int customerEmail;
+    private String customerEmail;
     @SerializedName("customer_address")
-    private int customerAddress;
+    private String customerAddress;
     @SerializedName("customer_status")
     private int customerStatus;
 
-    public Customer(int customerID, int customerName, int customerMobile,
-                    int customerEmail, int customerAddress, int customerStatus) {
+    public Customer(int customerID, String customerName,
+                    String customerMobile, String customerEmail,
+                    String customerAddress, int customerStatus) {
         this.customerID = customerID;
         this.customerName = customerName;
         this.customerMobile = customerMobile;
@@ -35,35 +36,35 @@ public class Customer {
         this.customerID = customerID;
     }
 
-    public int getCustomerName() {
+    public String getCustomerName() {
         return customerName;
     }
 
-    public void setCustomerName(int customerName) {
+    public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
 
-    public int getCustomerMobile() {
+    public String getCustomerMobile() {
         return customerMobile;
     }
 
-    public void setCustomerMobile(int customerMobile) {
+    public void setCustomerMobile(String customerMobile) {
         this.customerMobile = customerMobile;
     }
 
-    public int getCustomerEmail() {
+    public String getCustomerEmail() {
         return customerEmail;
     }
 
-    public void setCustomerEmail(int customerEmail) {
+    public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
     }
 
-    public int getCustomerAddress() {
+    public String getCustomerAddress() {
         return customerAddress;
     }
 
-    public void setCustomerAddress(int customerAddress) {
+    public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
     }
 

@@ -71,7 +71,7 @@ public class MainActivity2 extends AppCompatActivity
 
         //Select Home by default
         navigationView.setCheckedItem(R.id.nav_home);
-        Fragment fragment = new HomeFragment();
+        Fragment fragment = new CustomerFragment();
         displaySelectedFragment(fragment);
 
     }

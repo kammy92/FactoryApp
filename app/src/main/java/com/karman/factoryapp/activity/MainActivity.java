@@ -34,7 +34,7 @@ import com.google.gson.Gson;
 import com.karman.factoryapp.R;
 import com.karman.factoryapp.callbacks.VolleyCallback;
 import com.karman.factoryapp.controller.VolleyController;
-import com.karman.factoryapp.model.CustomerResponse;
+import com.karman.factoryapp.network.model.customer.CustomerDataResponse;
 import com.karman.factoryapp.utils.AppConfigTags;
 import com.karman.factoryapp.utils.AppConfigURL;
 import com.karman.factoryapp.utils.AppDetailsPref;
@@ -223,9 +223,9 @@ public class MainActivity extends AppCompatActivity {
                                 "    \"error\": {}\n" +
                                 "}");
                         Gson gson = new Gson();
-                        CustomerResponse customerResponse = gson.fromJson(jsonObject.toString(), CustomerResponse.class);
+                        CustomerDataResponse customerDataResponse = gson.fromJson(jsonObject.toString(), CustomerDataResponse.class);
 
-                        customerResponse.toString();
+                        customerDataResponse.toString();
 
                         Toast.makeText(getApplicationContext(), "Hurray!!", Toast.LENGTH_LONG).show();
                     }

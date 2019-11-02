@@ -15,7 +15,7 @@ import com.karman.factoryapp.R;
 import com.karman.factoryapp.callbacks.VolleyCallback;
 import com.karman.factoryapp.controller.VolleyController;
 import com.karman.factoryapp.model.Customer;
-import com.karman.factoryapp.model.CustomerResponse;
+import com.karman.factoryapp.network.model.customer.CustomerResponse;
 import com.karman.factoryapp.utils.Constants;
 
 import org.json.JSONException;
@@ -28,6 +28,7 @@ public class CustomerFragment extends Fragment {
     Button button;
     VolleyController volleyController;
     CustomerResponse customerResponse;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,11 +164,11 @@ public class CustomerFragment extends Fragment {
                         Log.e("karman", "JSON Response : " + jsonObject.toString());
                         Gson gson = new Gson();
                         customerResponse = gson.fromJson(jsonObject.toString(), CustomerResponse.class);
-
-                        Log.e("karman", "response : " + customerResponse.toString());
+//customerDataResponse = (CustomerDataResponse) baseResponse.getDataResponse();
+//                        Log.e("karman", "response : " + baseResponse.toString());
 
                         Toast.makeText(getActivity(), "Hurray!!", Toast.LENGTH_LONG).show();
-                        for (Customer customer : customerResponse.getCustomerList()){
+                        for (Customer customer : customerResponse.getCustomerDataResponse().getCustomerList()){
                             Log.e("karman","Customer Name : " + customer.getCustomerName());
                         }
                     }
