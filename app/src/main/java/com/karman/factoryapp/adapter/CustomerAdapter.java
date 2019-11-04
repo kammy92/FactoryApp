@@ -2,86 +2,67 @@ package com.karman.factoryapp.adapter;
 
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.karman.factoryapp.R;
-import com.karman.factoryapp.model.Project;
-import com.karman.factoryapp.utils.Utils;
+import com.karman.factoryapp.callbacks.ListItemClick;
+import com.karman.factoryapp.databinding.RowItemCustomerBinding;
+import com.karman.factoryapp.model.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHolder> {
-    OnItemClickListener mItemClickListener;
-
+    ListItemClick listItemClick;
     private Activity activity;
-    private List<Project> projectList = new ArrayList<>();
+    private List<Customer> customerList = new ArrayList<>();
+    RowItemCustomerBinding binding;
 
-    public CustomerAdapter(Activity activity, List<Project> projectList) {
+    public CustomerAdapter(Activity activity, List<Customer> customerList) {
         this.activity = activity;
-        this.projectList = projectList;
+        this.customerList = customerList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
-        final View sView = mInflater.inflate(R.layout.list_item_project, parent, false);
-        return new ViewHolder(sView);
+        binding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent.getContext()),
+                R.layout.row_item_customer, parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder (final ViewHolder holder, int position) {
-        final Project project = projectList.get(position);
-        Utils.setTypefaceToAllViews (activity, holder.tvProjectName);
-        holder.tvProjectName.setText (project.getProject_title ());
-        holder.tvProjectClient.setText ("Client : " + project.getClient_name ());
-        holder.tvProjectCreatedBy.setText ("Created By : " + project.getCreated_by ());
-        if (project.getProject_hours ().length () > 0) {
-            holder.tvProjectHours.setText ("Hours Status : " + project.getProject_hours ());
-            holder.tvProjectHours.setVisibility (View.VISIBLE);
-        } else {
-            holder.tvProjectHours.setVisibility (View.GONE);
-        }
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        Log.e("karman" , "Customer Name 2 : " + customerList.get(position).getCustomerName());
+        binding.setCustomer(customerList.get(position));
+
     }
 
     @Override
     public int getItemCount() {
-        return projectList.size();
+        return customerList.size();
     }
 
-    public void SetOnItemClickListener (final OnItemClickListener mItemClickListener) {
-        this.mItemClickListener = mItemClickListener;
+    public void setOnItemClickListener(final ListItemClick listItemClick) {
+        this.listItemClick = listItemClick;
     }
 
-
-    public interface OnItemClickListener {
-        public void onItemClick(View view, int position);
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvProjectName;
-        TextView tvProjectClient;
-        TextView tvProjectCreatedBy;
-        TextView tvProjectHours;
-    
-        public ViewHolder(View view) {
-            super(view);
-            tvProjectName = (TextView) view.findViewById (R.id.tvProjectName);
-            tvProjectClient = (TextView) view.findViewById (R.id.tvProjectClient);
-            tvProjectCreatedBy = (TextView) view.findViewById (R.id.tvProjectCreatedBy);
-            tvProjectHours = (TextView) view.findViewById (R.id.tvProjectHours);
-            view.setOnClickListener (this);
-        }
-
-        @Override
-        public void onClick(View v) {
-           mItemClickListener.onItemClick (v, getLayoutPosition ());
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public ViewHolder(RowItemCustomerBinding binding) {
+            super(binding.getRoot());
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//           listItemClick.onItemClick (v, getLayoutPosition ());
+                }
+            });
         }
     }
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+                name="customer"
+                type="com.karman.factoryapp.model.Customer" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_margin"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/tv_customer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{customer.customerName}"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold"
+                tools:text="KARMAN SINGH" />
+
+        <TextView
+                android:id="@+id/tv_customer_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:layout_marginTop="@dimen/activity_margin_small"
+                android:text="@{customer.customerMobile}"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_size_small"
+                tools:text="Mobile : 9873684678" />
+
+        <TextView
+                android:id="@+id/tv_customer_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:text="@{customer.customerEmail}"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_size_small"
+                tools:text="Email : karman.singhh@gmail.com" />
+
+        <TextView
+                android:id="@+id/tv_customer_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:text="@{customer.customerAddress}"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_size_small"
+                tools:text="DELHI" />
+    </LinearLayout>
+</layout>

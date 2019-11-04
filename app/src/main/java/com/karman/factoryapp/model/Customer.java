@@ -1,9 +1,11 @@
 package com.karman.factoryapp.model;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Customer {
-
+public class Customer extends BaseObservable {
     @SerializedName("customer_id")
     private int customerID;
     @SerializedName("customer_name")
@@ -28,52 +30,64 @@ public class Customer {
         this.customerStatus = customerStatus;
     }
 
+    @Bindable
     public int getCustomerID() {
         return customerID;
     }
 
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
+        notifyPropertyChanged(com.karman.factoryapp.BR.customerID);
     }
 
+    @Bindable
     public String getCustomerName() {
         return customerName;
     }
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+        notifyPropertyChanged(com.karman.factoryapp.BR.customerName);
     }
 
+    @Bindable
     public String getCustomerMobile() {
         return customerMobile;
     }
 
     public void setCustomerMobile(String customerMobile) {
         this.customerMobile = customerMobile;
+        notifyPropertyChanged(com.karman.factoryapp.BR.customerMobile);
     }
 
+    @Bindable
     public String getCustomerEmail() {
         return customerEmail;
     }
 
     public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
+        notifyPropertyChanged(com.karman.factoryapp.BR.customerEmail);
     }
 
+    @Bindable
     public String getCustomerAddress() {
         return customerAddress;
     }
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+        notifyPropertyChanged(com.karman.factoryapp.BR.customerAddress);
     }
 
+    @Bindable
     public int getCustomerStatus() {
         return customerStatus;
     }
 
     public void setCustomerStatus(int customerStatus) {
         this.customerStatus = customerStatus;
+        notifyPropertyChanged(com.karman.factoryapp.BR.customerStatus);
     }
 
     @Override
