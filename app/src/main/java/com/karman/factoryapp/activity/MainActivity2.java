@@ -1,7 +1,6 @@
 package com.karman.factoryapp.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.karman.factoryapp.R;
+import com.karman.factoryapp.learning.activity.LearningActivity;
 import com.karman.factoryapp.fragment.CustomerFragment;
 import com.karman.factoryapp.fragment.HomeFragment;
 import com.karman.factoryapp.fragment.ProductsFragment;
@@ -130,8 +130,10 @@ public class MainActivity2 extends AppCompatActivity
 
         } else if (id == R.id.nav_visit_us) {
             //Open URL on click of Visit Us
-            Intent urlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.SITE_URL));
-            startActivity(urlIntent);
+            Intent intent = new Intent(MainActivity2.this, LearningActivity.class);
+            startActivity(intent);
+//            Intent urlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.SITE_URL));
+//            startActivity(urlIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

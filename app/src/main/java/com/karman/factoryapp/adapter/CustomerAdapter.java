@@ -2,7 +2,6 @@ package com.karman.factoryapp.adapter;
 
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +39,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Log.e("karman" , "Customer Name 2 : " + customerList.get(position).getCustomerName());
         binding.setCustomer(customerList.get(position));
-
     }
 
     @Override

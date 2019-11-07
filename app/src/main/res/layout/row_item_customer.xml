@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <data>
-
         <variable
                 name="customer"
                 type="com.karman.factoryapp.model.Customer" />
@@ -31,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_margin"
                 android:layout_marginTop="@dimen/activity_margin_small"
-                android:text="@{customer.customerMobile}"
+                android:text="@{@string/mobile(customer.customerMobile)}"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_size_small"
                 tools:text="Mobile : 9873684678" />
@@ -41,9 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_margin"
-                android:text="@{customer.customerEmail}"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_size_small"
+                android:text="@{@string/email(customer.customerEmail)}"
                 tools:text="Email : karman.singhh@gmail.com" />
 
         <TextView
@@ -51,9 +49,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_margin"
-                android:text="@{customer.customerAddress}"
+                android:text="@{@string/address(customer.customerAddress)}"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_size_small"
                 tools:text="DELHI" />
     </LinearLayout>
+
+    <!-- For Reference on setting Prefixes
+    https://stackoverflow.com/questions/40039942/i-want-to-concat-two-strings-for-a-textview-in-android-data-binding-api -->
+
 </layout>

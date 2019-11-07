@@ -85,4 +85,9 @@
     <string name="text_website">AndroidDeft.Com</string>
 
 
+    <string name="email">Email : %s</string>
+    <string name="mobile">Mobile : %s</string>
+    <string name="address">Address : %s</string>
+
+
 </resources>
