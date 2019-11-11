@@ -16,10 +16,17 @@ public class LearningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_learning);
-        binding.btForm.setOnClickListener(new View.OnClickListener() {
+        binding.btDatabinding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LearningActivity.this, SignUpFormActivity.class);
+                Intent intent = new Intent(LearningActivity.this, SampleDataBindingActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.btRxjava.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LearningActivity.this, SampleRxJavaActivity.class);
                 startActivity(intent);
             }
         });

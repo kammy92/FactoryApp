@@ -26,7 +26,10 @@
                 android:name=".learning.activity.LearningActivity"
                 android:screenOrientation="portrait"></activity>
         <activity
-                android:name=".learning.activity.SignUpFormActivity"
+                android:name=".learning.activity.SampleDataBindingActivity"
+                android:screenOrientation="portrait"></activity>
+        <activity
+                android:name=".learning.activity.SampleRxJavaActivity"
                 android:screenOrientation="portrait"></activity>
         <activity
                 android:name=".activity.MainActivity"

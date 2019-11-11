@@ -14,6 +14,12 @@ public class User extends BaseObservable {
     public User() {
     }
 
+    public User(String firstName, String lastName, String gender, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+    }
 
     @Bindable
     public String getFirstName() {
