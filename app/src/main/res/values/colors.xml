@@ -12,4 +12,8 @@
     <color name="text_color_grey_light">#B8B8B8</color>
     <color name="color_divider">#eeeeee</color>
 
+    <color name="peacock_blue">#0058A3</color>
+    <color name="peacock_blue_dark">#004682</color>
+    <color name="peacock_blue_light">#660058A3</color>
+
 </resources>

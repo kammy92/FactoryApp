@@ -14,7 +14,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".activity.MainActivity2"
+                android:name=".learning.activity.LearningActivity"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".learning.activity.LearningActivity"
+                android:name=".activity.MainActivity2"
                 android:screenOrientation="portrait"></activity>
         <activity
                 android:name=".learning.activity.SampleDataBindingActivity"
